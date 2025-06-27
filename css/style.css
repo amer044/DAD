@@ -1,0 +1,106 @@
+body {
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    background: #f3f0ff;
+    color: #222;
+}
+
+header.hero {
+    background: linear-gradient(120deg, #5f2eea 60%, #00c6fb 100%);
+    color: #fff;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-image: 
+        linear-gradient(120deg, #5f2eea 60%, #00c6fb 100%),
+        url('logo-dhad.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover, 500px;
+}
+
+nav {
+    background: #fff;
+    box-shadow: 0 2px 8px #0001;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav a {
+    color: #5f2eea;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    padding: 8px 18px;
+    border-radius: 20px;
+    transition: background 0.2s, color 0.2s;
+}
+
+nav a:hover, nav a.active {
+    background: #ff9800;
+    color: #fff;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 90px 30px 30px 30px;
+    z-index: 2;
+    position: relative;
+}
+
+.hero-text h1 {
+    font-size: 2.8em;
+    margin-bottom: 18px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 0 2px 12px #0003;
+}
+
+.hero-text p {
+    font-size: 1.3em;
+    margin-bottom: 35px;
+    color: #ffe082;
+    font-weight: 500;
+}
+
+.hero-text .cta-btn {
+    background: #ff9800;
+    color: #fff;
+    border: none;
+    padding: 16px 38px;
+    border-radius: 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 18px #ff980055;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.hero-text .cta-btn:hover {
+    background: #fb8c00;
+    transform: scale(1.06);
+}
+
+footer {
+    background: #5f2eea;
+    color: #fff;
+    text-align: center;
+    padding: 18px 0;
+    margin-top: 40px;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+}
