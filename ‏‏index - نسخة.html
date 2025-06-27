@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية ضاد التعليمية</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cairo:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            background: #f3f0ff;
+            color: #222;
+        }
+        header.hero {
+            background: linear-gradient(120deg, #5f2eea 60%, #00c6fb 100%);
+            color: #fff;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            background-image: 
+                linear-gradient(120deg, #5f2eea 60%, #00c6fb 100%),
+                url('logo-dhad.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover, 500px;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.07);
+            z-index: 1;
+            pointer-events: none;
+        }
+        nav {
+            background: #fff;
+            box-shadow: 0 2px 8px #0001;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        nav a {
+            color: #5f2eea;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            padding: 8px 18px;
+            border-radius: 20px;
+            transition: background 0.2s, color 0.2s;
+        }
+        nav a:hover, nav a.active {
+            background: #ff9800;
+            color: #fff;
+        }
+        .hero-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 90px 30px 30px 30px;
+            z-index: 2;
+            position: relative;
+        }
+        .hero-text {
+            flex: 1.2;
+            padding-left: 40px;
+        }
+        .hero-text h1 {
+            font-size: 2.8em;
+            margin-bottom: 18px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            color: #fff;
+            text-shadow: 0 2px 12px #0003;
+            animation: fadeInDown 1s;
+        }
+        .hero-text p {
+            font-size: 1.3em;
+            margin-bottom: 35px;
+            color: #ffe082;
+            font-weight: 500;
+            animation: fadeInDown 1.5s;
+        }
+        .hero-text .cta-btn {
+            background: #ff9800;
+            color: #fff;
+            border: none;
+            padding: 16px 38px;
+            border-radius: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 18px #ff980055;
+            transition: background 0.2s, transform 0.2s;
+            animation: fadeInUp 2s;
+        }
+        .hero-text .cta-btn:hover {
+            background: #fb8c00;
+            transform: scale(1.06);
+        }
+        .hero-video {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-right: 20px;
+        }
+        .hero-video iframe, .hero-video video {
+            width: 370px;
+            height: 220px;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px #0002;
+            background: #222;
+        }
+        .hero-shape {
+            position: absolute;
+            left: -80px;
+            bottom: -120px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #ff9800 0%, #5f2eea 80%);
+            opacity: 0.13;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            color: #5f2eea;
+            font-size: 2em;
+            margin-bottom: 25px;
+            border-right: 5px solid #ff9800;
+            padding-right: 12px;
+            font-weight: 700;
+        }
+        .programs-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        .program-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px #5f2eea22;
+            padding: 22px 16px;
+            transition: transform 0.15s, box-shadow 0.15s;
+            position: relative;
+        }
+        .program-card:hover {
+            transform: translateY(-7px) scale(1.03);
+            box-shadow: 0 6px 24px #5f2eea33;
+        }
+        .program-card h3 {
+            color: #ff9800;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        .program-card .desc {
+            color: #333;
+            font-size: 1.05em;
+            margin-bottom: 10px;
+        }
+        .program-card .more {
+            color: #5f2eea;
+            font-size: 0.98em;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .feature-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px #5f2eea22;
+            padding: 25px 18px;
+            text-align: center;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .feature-card:hover {
+            transform: translateY(-7px) scale(1.03);
+            box-shadow: 0 6px 24px #5f2eea33;
+        }
+        .feature-card h3 {
+            color: #ff9800;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        .courses-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        .course-card {
+            background: #5f2eea;
+            color: #fff;
+            border-radius: 12px;
+            flex: 1 1 300px;
+            min-width: 260px;
+            box-shadow: 0 2px 12px #5f2eea22;
+            padding: 25px 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+        .course-card h3 {
+            color: #ffe082;
+            margin-bottom: 10px;
+        }
+        .course-card button {
+            margin-top: 15px;
+            align-self: flex-end;
+        }
+        .payment, .contact {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px #5f2eea22;
+            padding: 30px 20px;
+            margin-bottom: 40px;
+        }
+        label {
+            font-weight: bold;
+            color: #5f2eea;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 7px 0 18px 0;
+            border: 1px solid #bdbdbd;
+            border-radius: 6px;
+            font-size: 1em;
+            background: #f7faff;
+            transition: border 0.2s;
+        }
+        input:focus, select:focus, textarea:focus {
+            border: 1.5px solid #ff9800;
+            outline: none;
+        }
+        button {
+            background: #ff9800;
+            color: #fff;
+            border: none;
+            padding: 10px 28px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px #ff980033;
+        }
+        button:hover {
+            background: #fb8c00;
+        }
+        .whatsapp-float {
+            position: fixed;
+            left: 25px;
+            bottom: 25px;
+            z-index: 9999;
+            background: #25d366;
+            color: #fff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px #0002;
+            font-size: 2.2em;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+        .whatsapp-float:hover {
+            background: #128c7e;
+        }
+        .whatsapp-float span {
+            display: none;
+        }
+        @media (max-width: 600px) {
+            .whatsapp-float {
+                width: 48px;
+                height: 48px;
+                font-size: 1.5em;
+            }
+        }
+        footer {
+            background: #5f2eea;
+            color: #fff;
+            text-align: center;
+            padding: 18px 0;
+            margin-top: 40px;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+        }
+        /* تحسينات إضافية */
+        .login-error {
+            display: none; /* إخفاء الرسائل افتراضيًا */
+            background: #ffebee;
+            color: #c62828;
+            padding: 10px 15px;
+            border-radius: 7px;
+            margin-bottom: 12px;
+            font-size: 1em;
+            text-align: center;
+            border: 1px solid #ffcdd2;
+        }
+        .login-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(40, 40, 60, 0.45); /* طبقة شفافة خلف النافذة */
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        .login-modal.active {
+            display: flex;
+        }
+        .login-box {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px #0003;
+            padding: 35px 28px 28px 28px;
+            min-width: 320px;
+            max-width: 95vw;
+            position: relative;
+            animation: fadeInDown 0.5s;
+        }
+        .login-close {
+            position: absolute;
+            left: 12px;
+            top: 12px;
+            background: none;
+            border: none;
+            font-size: 2em;
+            color: #888;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .login-close:hover {
+            color: #c62828;
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <nav>
+            <a href="#programs" class="active">البرامج</a>
+            <a href="#courses">الدورات</a>
+            <a href="#features">الميزات</a>
+            <a href="#payment">طرق الدفع</a>
+            <a href="#contact">تواصل معنا</a>
+            <a href="#login" id="login-link">تسجيل الدخول</a>
+            <!-- تم حذف زر "مستخدم جديد" من هنا -->
+        </nav>
+        <div class="hero-content">
+            <div class="hero-text" data-aos="fade-left">
+                <h1>أكاديمية ضاد التعليمية</h1>
+                <p>منصة عصرية واحترافية لتعلم القرآن الكريم واللغة العربية<br>أكاديمية تعليمية إلكترونية للتعليم عن بُعد💻
+ تُعنى بتعليم القرآن الكريم واللغة العربية والقراءة📋
+ بأسلوب يجمع بين التعلم واللعب♟
+ نغرس القيم والأخلاق ونبني جيلاً معتزًا بدينه ولغته في بيئة آمنة، تفاعلية وممتعة.🌐
+</p>
+                <button class="cta-btn" onclick="document.getElementById('programs').scrollIntoView({behavior:'smooth'})">تعرف على برامجنا</button>
+            </div>
+            <div class="hero-video" data-aos="fade-right">
+                <iframe src="https://www.youtube.com/embed/1Q8fG0TtVAY" title="فيديو تعريفي" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div class="hero-shape"></div>
+    </header>
+    <!-- نافذة تسجيل الدخول والتسجيل -->
+    <div class="login-modal" id="loginModal">
+        <div class="login-box" id="loginBox">
+            <button class="login-close" id="closeLogin" title="إغلاق">&times;</button>
+            <h2 id="loginTitle">تسجيل الدخول</h2>
+            <div class="login-error" id="loginError"></div>
+            <!-- نموذج تسجيل الدخول -->
+            <form id="loginForm" autocomplete="off">
+                <label for="username">اسم المستخدم:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">كلمة المرور:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">دخول</button>
+                <div style="text-align:center; margin: 15px 0; color:#888;">أو</div>
+                <button type="button" id="loginWithEmail" style="background:#4285f4; color:#fff; width:100%; margin-bottom:10px;">
+                    تسجيل الدخول عبر البريد الإلكتروني
+                </button>
+                <div style="text-align:center; margin: 10px 0;">
+                    <a href="#" id="showRegister" style="color:#5f2eea; text-decoration:underline; font-size:0.98em;">مستخدم جديد؟ سجل الآن</a>
+                </div>
+            </form>
+            <!-- نموذج تسجيل الدخول بالبريد الإلكتروني -->
+            <form id="emailLoginForm" style="display:none;" autocomplete="off">
+                <label for="emailLogin">البريد الإلكتروني:</label>
+                <input type="email" id="emailLogin" name="emailLogin" required>
+                <label for="emailPassword">كلمة المرور:</label>
+                <input type="password" id="emailPassword" name="emailPassword" required>
+                <button type="submit">دخول</button>
+                <button type="button" id="backToUserLogin" style="background:#5f2eea; color:#fff; width:100%; margin-top:10px;">
+                    العودة لتسجيل الدخول باسم المستخدم
+                </button>
+                <div style="text-align:center; margin: 10px 0;">
+                    <a href="#" id="showRegister2" style="color:#5f2eea; text-decoration:underline; font-size:0.98em;">مستخدم جديد؟ سجل الآن</a>
+                </div>
+            </form>
+            <!-- نموذج تسجيل مستخدم جديد -->
+            <form id="registerForm" style="display:none;" autocomplete="off">
+                <label for="regName">الاسم الكامل:</label>
+                <input type="text" id="regName" name="regName" required>
+                <label for="regEmail">البريد الإلكتروني:</label>
+                <input type="email" id="regEmail" name="regEmail" required>
+                <label for="regUsername">اسم المستخدم:</label>
+                <input type="text" id="regUsername" name="regUsername" required>
+                <label for="regPassword">كلمة المرور:</label>
+                <input type="password" id="regPassword" name="regPassword" required>
+                <button type="submit">تسجيل</button>
+                <button type="button" id="backToLogin" style="background:#5f2eea; color:#fff; width:100%; margin-top:10px;">
+                    العودة لتسجيل الدخول
+                </button>
+            </form>
+        </div>
+    </div>
+    <!-- زر واتساب عائم -->
+    <a href="https://wa.me/966500000000" class="whatsapp-float" target="_blank" title="تواصل عبر واتساب">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.832 4.584 2.236 6.393L4 29l7.828-2.049C13.416 27.632 14.692 28 16 28c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 22c-1.13 0-2.237-.188-3.287-.557l-.235-.08-4.652 1.217 1.24-4.527-.153-.236C7.188 18.237 7 17.13 7 16c0-4.963 4.037-9 9-9s9 4.037 9 9-4.037 9-9 9zm5.07-6.29c-.276-.138-1.637-.808-1.89-.9-.253-.093-.437-.138-.62.138-.184.276-.713.9-.874 1.085-.161.184-.322.207-.598.069-.276-.138-1.166-.429-2.223-1.367-.822-.733-1.377-1.637-1.54-1.913-.161-.276-.017-.425.122-.563.126-.125.276-.322.414-.483.138-.161.184-.276.276-.46.092-.184.046-.345-.023-.483-.069-.138-.62-1.497-.849-2.052-.224-.54-.453-.467-.62-.476l-.527-.009c-.161 0-.46.069-.701.322-.241.253-.92.899-.92 2.192 0 1.293.943 2.544 1.074 2.721.131.184 1.857 2.838 4.504 3.868.63.217 1.12.346 1.504.443.632.161 1.208.138 1.663.084.507-.06 1.637-.669 1.87-1.316.23-.647.23-1.202.161-1.316-.069-.115-.253-.184-.529-.322z"/>
+        </svg>
+        <span>واتساب</span>
+    </a>
+    <div class="container">
+        <!-- قسم البرامج -->
+        <section id="programs">
+            <div class="section-title">البرامج المفعلة</div>
+            <div class="programs-list">
+                <div class="program-card" data-aos="fade-up">
+                    <h3>برنامج حروف وكلمات</h3>
+                    <div class="desc">برنامج لتعليم القارئة العربية اسليمة للناشئة بأسلوب ممتع وتفاعلي بعيداً عن الملل</div>
+                    <div class="more">المزيد</div>
+                </div>
+                <div class="program-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>برنامج ورتل القرآن</h3>
+                    <div class="desc">برنامج لتعليم تلاوة القرآن الكريم والتجويد مع أساتذة مختصين ومجازين</div>
+                    <div class="more">المزيد</div>
+                </div>
+                <div class="program-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>برنامج العربية لغتي</h3>
+                    <div class="desc">برنامج لإتقان اللغة العربية مع الكتابة والوعي من خلال القصص التي تنشر الوعي والأخلاق الحميدة والعبر والأنشطة التفاعلية </div>
+                    <div class="more">المزيد</div>
+                </div>
+            </div>
+        </section>
+        <section id="features">
+            <div class="section-title">الميزات والإضافات</div>
+            <div class="features">
+                <div class="feature-card" data-aos="zoom-in">
+                    <h3>دروس تفاعلية</h3>
+                    <p>دروس فيديو وصوت وتمارين تفاعلية لتسهيل التعلم.</p>
+                </div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="100">
+                    <h3>اختبارات وتقييمات</h3>
+                    <p>اختبارات دورية لتقييم مستوى الطلاب وتقديم تقارير مفصلة.</p>
+                </div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="200">
+                    <h3>منتدى للنقاش</h3>
+                    <p>منتدى تفاعلي لطرح الأسئلة والنقاش بين الطلاب والمعلمين.</p>
+                </div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="300">
+                    <h3>دعم مباشر</h3>
+                    <p>دعم فني وتعليمي مباشر عبر الدردشة أو البريد الإلكتروني.</p>
+                </div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="400">
+                    <h3>شهادات معتمدة</h3>
+                    <p>شهادات إتمام الدورات معتمدة إلكترونياً.</p>
+                </div>
+                <div class="feature-card" data-aos="zoom-in" data-aos-delay="500">
+                    <h3>تتبع التقدم</h3>
+                    <p>لوحة تحكم لمتابعة تقدمك في الدورات.</p>
+                </div>
+            </div>
+        </section>
+        <section id="courses" class="courses">
+            <div class="section-title">الدورات المتاحة</div>
+            <div class="courses-list">
+                <div class="course-card" data-aos="fade-up">
+                    <h3>دورة تعليم القرآن الكريم</h3>
+                    <p>تعلم التلاوة الصحيحة، أحكام التجويد، والحفظ.</p>
+                    <button>اشترك الآن</button>
+                </div>
+                <div class="course-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>دورة اللغة العربية للمبتدئين</h3>
+                    <p>أساسيات القراءة والكتابة والنحو.</p>
+                    <button>اشترك الآن</button>
+                </div>
+                <div class="course-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>دورة المحادثة العربية</h3>
+                    <p>تطوير مهارات التحدث والاستماع باللغة العربية.</p>
+                    <button>اشترك الآن</button>
+                </div>
+            </div>
+        </section>
+        <section id="payment" class="payment">
+            <div class="section-title">طرق الدفع</div>
+            <ul>
+                <li>بطاقات الائتمان (Visa, MasterCard)</li>
+                <li>باي بال (PayPal)</li>
+                <li>تحويل بنكي</li>
+                <li>الدفع عبر المحافظ الإلكترونية (Apple Pay, Google Pay)</li>
+            </ul>
+            <form>
+                <label>اختر الدورة:</label>
+                <select>
+                    <option>برنامج حروف وكلمات</option>
+                    <option>برنامج ورتل القرآن</option>
+                    <option>برنامج العربية لغتي</option>
+                </select>
+                <label>اختر طريقة الدفع:</label>
+                <select>
+                    <option>بطاقة ائتمان</option>
+                    <option>باي بال</option>
+                    <option>تحويل بنكي</option>
+                    <option>محفظة إلكترونية</option>
+                </select>
+                <button type="submit">ادفع الآن</button>
+            </form>
+        </section>
+        <section id="contact" class="contact">
+            <div class="section-title">تواصل معنا</div>
+            <form>
+                <label>الاسم:</label>
+                <input type="text" required>
+                <label>البريد الإلكتروني:</label>
+                <input type="email" required>
+                <label>رسالتك:</label>
+                <textarea required rows="4"></textarea>
+                <button type="submit">إرسال</button>
+            </form>
+            <div style="text-align:center; margin-top:20px;">
+                <a href="https://wa.me/966500000000" target="_blank" style="color:#25d366; font-size:1.2em; text-decoration:none;">
+                    <b>تواصل معنا عبر الواتساب</b>
+                </a>
+            </div>
+        </section>
+    </div>
+    <footer>
+        &copy; 2025 أكاديمية ضاد التعليمية. جميع الحقوق محفوظة.
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 900, once: true });
+
+      // عناصر النماذج
+      const loginLink = document.getElementById('login-link');
+      // تم حذف const registerLink = document.getElementById('register-link');
+      const loginModal = document.getElementById('loginModal');
+      const closeLogin = document.getElementById('closeLogin');
+      const loginForm = document.getElementById('loginForm');
+      const emailLoginForm = document.getElementById('emailLoginForm');
+      const registerForm = document.getElementById('registerForm');
+      const loginError = document.getElementById('loginError');
+      const loginWithEmail = document.getElementById('loginWithEmail');
+      const backToUserLogin = document.getElementById('backToUserLogin');
+      const showRegister = document.getElementById('showRegister');
+      const showRegister2 = document.getElementById('showRegister2');
+      const backToLogin = document.getElementById('backToLogin');
+      const loginTitle = document.getElementById('loginTitle');
+
+      // فتح نافذة تسجيل الدخول
+      loginLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        loginModal.classList.add('active');
+        loginTitle.textContent = 'تسجيل الدخول';
+        loginError.style.display = 'none';
+        loginForm.style.display = '';
+        emailLoginForm.style.display = 'none';
+        registerForm.style.display = 'none';
+        loginForm.reset();
+        emailLoginForm.reset();
+        registerForm.reset();
+        document.getElementById('username').focus();
+      });
+
+      // زر "مستخدم جديد؟ سجل الآن" في النماذج
+      showRegister && showRegister.addEventListener('click', function(e) {
+        e.preventDefault();
+        loginTitle.textContent = 'تسجيل مستخدم جديد';
+        loginError.style.display = 'none';
+        loginForm.style.display = 'none';
+        emailLoginForm.style.display = 'none';
+        registerForm.style.display = '';
+        registerForm.reset();
+        document.getElementById('regName').focus();
+      });
+      showRegister2 && showRegister2.addEventListener('click', function(e) {
+        e.preventDefault();
+        loginTitle.textContent = 'تسجيل مستخدم جديد';
+        loginError.style.display = 'none';
+        loginForm.style.display = 'none';
+        emailLoginForm.style.display = 'none';
+        registerForm.style.display = '';
+        registerForm.reset();
+        document.getElementById('regName').focus();
+      });
+
+      // العودة لتسجيل الدخول
+      backToLogin && backToLogin.addEventListener('click', function() {
+        loginTitle.textContent = 'تسجيل الدخول';
+        loginError.style.display = 'none';
+        loginForm.style.display = '';
+        emailLoginForm.style.display = 'none';
+        registerForm.style.display = 'none';
+        loginForm.reset();
+        document.getElementById('username').focus();
+      });
+
+      // إغلاق النافذة
+      closeLogin.addEventListener('click', function() {
+        loginModal.classList.remove('active');
+      });
+
+      // إغلاق عند الضغط خارج الصندوق
+      loginModal.addEventListener('click', function(e) {
+        if (e.target === loginModal) {
+          loginModal.classList.remove('active');
+        }
+      });
+
+      // إغلاق النافذة عند الضغط على زر Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && loginModal.classList.contains('active')) {
+          loginModal.classList.remove('active');
+        }
+      });
+
+      // إظهار نموذج تسجيل الدخول بالبريد الإلكتروني
+      loginWithEmail.addEventListener('click', function() {
+        loginForm.style.display = 'none';
+        emailLoginForm.style.display = '';
+        registerForm.style.display = 'none';
+        loginError.style.display = 'none';
+        emailLoginForm.reset();
+        document.getElementById('emailLogin').focus();
+      });
+
+      // العودة لتسجيل الدخول باسم المستخدم
+      backToUserLogin.addEventListener('click', function() {
+        emailLoginForm.style.display = 'none';
+        loginForm.style.display = '';
+        registerForm.style.display = 'none';
+        loginError.style.display = 'none';
+        loginForm.reset();
+        document.getElementById('username').focus();
+      });
+
+      // معالجة تسجيل الدخول باسم المستخدم (تجريبي فقط)
+      loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const username = loginForm.username.value.trim();
+        const password = loginForm.password.value;
+        // بيانات دخول تجريبية
+        if (username === 'admin' && password === '1234') {
+          loginError.style.display = 'none';
+          loginModal.classList.remove('active');
+          alert('تم تسجيل الدخول بنجاح!');
+        } else {
+          loginError.textContent = 'اسم المستخدم أو كلمة المرور غير صحيحة.';
+          loginError.style.display = 'block';
+        }
+      });
+
+      // معالجة تسجيل الدخول بالبريد الإلكتروني (تجريبي فقط)
+      emailLoginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = emailLoginForm.emailLogin.value.trim();
+        const password = emailLoginForm.emailPassword.value;
+        // بيانات دخول تجريبية
+        if (email === 'test@email.com' && password === '1234') {
+          loginError.style.display = 'none';
+          loginModal.classList.remove('active');
+          alert('تم تسجيل الدخول بالبريد الإلكتروني بنجاح!');
+        } else {
+          loginError.textContent = 'البريد الإلكتروني أو كلمة المرور غير صحيحة.';
+          loginError.style.display = 'block';
+        }
+      });
+
+      // معالجة تسجيل مستخدم جديد مع التحقق من صحة البيانات
+      registerForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = registerForm.regName.value.trim();
+        const email = registerForm.regEmail.value.trim();
+        const username = registerForm.regUsername.value.trim();
+        const password = registerForm.regPassword.value;
+
+        // تحقق من صحة البريد الإلكتروني
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          loginError.textContent = 'يرجى إدخال بريد إلكتروني صحيح.';
+          loginError.style.display = 'block';
+          return;
+        }
+
+        // تحقق من قوة كلمة المرور (8 أحرف على الأقل، رقم وحرف)
+        if (password.length < 8 || !/\d/.test(password) || !/[A-Za-z]/.test(password)) {
+          loginError.textContent = 'كلمة المرور يجب أن تكون 8 أحرف على الأقل وتحتوي على رقم وحرف.';
+          loginError.style.display = 'block';
+          return;
+        }
+
+        // تحقق من أن جميع الحقول ممتلئة
+        if (!name || !username) {
+          loginError.textContent = 'يرجى تعبئة جميع الحقول.';
+          loginError.style.display = 'block';
+          return;
+        }
+
+        // يمكنك هنا إرسال البيانات إلى السيرفر أو حفظها في localStorage
+        loginError.style.display = 'none';
+        loginModal.classList.remove('active');
+        alert('تم التسجيل بنجاح! يمكنك الآن تسجيل الدخول.');
+      });
+
+      // إخفاء رسالة الخطأ عند الكتابة في أي حقل من النماذج
+      [loginForm, emailLoginForm, registerForm].forEach(form => {
+        if (form) {
+          form.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', () => {
+              loginError.style.display = 'none';
+            });
+          });
+        }
+      });
+
+      // منع إرسال النماذج الافتراضي في الأقسام الأخرى
+      document.querySelectorAll('.contact form, .payment form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          alert('تم إرسال البيانات بنجاح!');
+          form.reset();
+        });
+      });
+    </script>
+</body>
+</html>
